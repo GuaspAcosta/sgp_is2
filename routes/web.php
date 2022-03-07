@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'LoginController@showLoginForm')->name('login');
+Route::post('/', 'LoginController@login');
+Route::get('/index', 'PanelController@index')->name('panel.index')->middleware('auth');
+Route::resource('proyectos', 'ProyectoController', ['except' => ['show']]);
+Route::post('logout', 'LoginController@logout')->name('panel.logout');
+
