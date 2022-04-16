@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'LoginController@showLoginForm')->name('login');
-Route::post('/', 'LoginController@login');
-Route::get('/index', 'PanelController@index')->name('panel.index')->middleware('auth');
-Route::resource('proyectos', 'ProyectoController', ['except' => ['show']]);
-Route::post('logout', 'LoginController@logout')->name('panel.logout');
+Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
