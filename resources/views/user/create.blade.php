@@ -34,17 +34,30 @@
                     @endif
                 </div>
                 <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
-                    <input value="{{ old('username') }}"
+                    <label for="password" class="form-label">Password</label>
+                    <input value="{{ old('password') }}"
                         type="text" 
                         class="form-control" 
-                        name="username" 
-                        placeholder="Username" required>
-                    @if ($errors->has('username'))
-                        <span class="text-danger text-left">{{ $errors->first('username') }}</span>
+                        name="password" 
+                        placeholder="Password" required>
+                    @if ($errors->has('password'))
+                        <span class="text-danger text-left">{{ $errors->first('password') }}</span>
                     @endif
                 </div>
-
+                <div class="mb-3">
+                    <label for="role" class="form-label">Role</label>
+                    <select class="form-control" 
+                        name="role" required>
+                        <option value="">Select role</option>
+                        @foreach($roles as $role)
+                            <option value="{{ $role->id }}"
+                                >{{ $role->name }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('role'))
+                        <span class="text-danger text-left">{{ $errors->first('role') }}</span>
+                    @endif
+                </div>
                 <button type="submit" class="btn btn-primary">Save user</button>
                 <a href="{{ route('users.index') }}" class="btn btn-default">Back</a>
             </form>

@@ -24,14 +24,14 @@ Route::group(['middleware' => ['auth', 'permission']], function() {
     /**
      * User Routes
      */
-    Route::group(['prefix' => 'users'], function() {
-        Route::get('/', 'UsersController@index')->name('users.index');
-        Route::get('/create', 'UsersController@create')->name('users.create');
-        Route::post('/create', 'UsersController@store')->name('users.store');
-        Route::get('/{user}/show', 'UsersController@show')->name('users.show');
-        Route::get('/{user}/edit', 'UsersController@edit')->name('users.edit');
-        Route::patch('/{user}/update', 'UsersController@update')->name('users.update');
-        Route::delete('/{user}/delete', 'UsersController@destroy')->name('users.destroy');
+    Route::group(['prefix' => 'user'], function() {
+        Route::get('/', 'App\Http\Controllers\UserController@index')->name('users.index');
+        Route::get('/create', 'App\Http\Controllers\UserController@create')->name('users.create');
+        Route::post('/create', 'App\Http\Controllers\UserController@store')->name('users.store');
+        Route::get('/{user}/show', 'App\Http\Controllers\UserController@show')->name('users.show');
+        Route::get('/{user}/edit', 'App\Http\Controllers\UserController@edit')->name('users.edit');
+        Route::patch('/{user}/update', 'App\Http\Controllers\UserController@update')->name('users.update');
+        Route::delete('/{user}/delete', 'App\Http\Controllers\UserController@destroy')->name('users.destroy');
     });
 
     /**
@@ -47,8 +47,8 @@ Route::group(['middleware' => ['auth', 'permission']], function() {
         Route::delete('/{post}/delete', 'PostsController@destroy')->name('posts.destroy');
     });*/
 
-    Route::resource('roles', RolesController::class);
-    Route::resource('permissions', PermissionsController::class);
+    Route::resource('roles', App\Http\Controllers\RolesController::class);
+    Route::resource('permissions', App\Http\Controllers\PermissionsController::class);
 });
 
 
