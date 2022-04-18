@@ -37,15 +37,15 @@ Route::group(['middleware' => ['auth', 'permission']], function() {
     /**
      * User Routes
      */
-    /*  Route::group(['prefix' => 'posts'], function() {
-        Route::get('/', 'PostsController@index')->name('posts.index');
-        Route::get('/create', 'PostsController@create')->name('posts.create');
-        Route::post('/create', 'PostsController@store')->name('posts.store');
-        Route::get('/{post}/show', 'PostsController@show')->name('posts.show');
-        Route::get('/{post}/edit', 'PostsController@edit')->name('posts.edit');
-        Route::patch('/{post}/update', 'PostsController@update')->name('posts.update');
-        Route::delete('/{post}/delete', 'PostsController@destroy')->name('posts.destroy');
-    });*/
+        Route::group(['prefix' => 'proyecto'], function() {
+        Route::get('/', 'App\Http\Controllers\ProyectoController@index')->name('proyecto.index');
+        Route::get('/create', 'App\Http\Controllers\ProyectoController@create')->name('proyecto.create');
+        Route::post('/create', 'App\Http\Controllers\ProyectoController@store')->name('proyecto.store');
+        Route::get('/{proyecto}/show', 'App\Http\Controllers\ProyectoController@show')->name('proyecto.show');
+        Route::get('/{proyecto}/edit', 'App\Http\Controllers\ProyectoController@edit')->name('proyecto.edit');
+        Route::patch('/{proyecto}/update', 'App\Http\Controllers\ProyectoController@update')->name('proyecto.update');
+        Route::delete('/{proyecto}/delete', 'App\Http\Controllers\ProyectoController@destroy')->name('proyecto.destroy');
+    });
 
     Route::resource('roles', App\Http\Controllers\RolesController::class);
     Route::resource('permissions', App\Http\Controllers\PermissionsController::class);

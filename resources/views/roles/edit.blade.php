@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="bg-light p-4 rounded">
-        <h1>Update role</h1>
+        <h1>Actualizar roles</h1>
         <div class="lead">
-            Edit role and manage permissions.
+            Editar permisos de usuarios.
         </div>
 
         <div class="container mt-4">
@@ -24,7 +24,7 @@
                 @method('patch')
                 @csrf
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name</label>
+                    <label for="name" class="form-label">Nombre</label>
                     <input value="{{ $role->name }}" 
                         type="text" 
                         class="form-control" 
@@ -32,7 +32,7 @@
                         placeholder="Name" required>
                 </div>
                 
-                <label for="permissions" class="form-label">Assign Permissions</label>
+                <label for="permissions" class="form-label">Asignar Permisos</label>
 
                 <table class="table table-striped">
                     <thead>
@@ -58,8 +58,8 @@
                     @endforeach
                 </table>
 
-                <button type="submit" class="btn btn-primary">Save changes</button>
-                <a href="{{ route('roles.index') }}" class="btn btn-default">Back</a>
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                <a href="{{ route('roles.index') }}" class="btn btn-default">Volver</a>
             </form>
         </div>
 
