@@ -12,7 +12,7 @@
             <li><a href="{{ route('users.index') }}" class="nav-link px-2 text-white">Usuario</a></li>
             <li><a href="{{ route('roles.index') }}" class="nav-link px-2 text-white">Roles</a></li>
             @endrole
-            {{--<li><a href="{{ route('posts.index') }}" class="nav-link px-2 text-white">Posts</a></li>--}}
+            <li><a href="{{ route('proyecto.index') }}" class="nav-link px-2 text-white">Proyectos</a></li>
           @endauth
         </ul>
         @auth
