@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Proyecto;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProyectoController extends Controller
@@ -26,7 +27,9 @@ class ProyectoController extends Controller
      */
     public function create()
     {
-        return view('proyecto.create');
+            return view('proyecto.create',[
+            'users' => User::latest()->get()
+        ]);
     }
 
     /**
@@ -38,7 +41,8 @@ class ProyectoController extends Controller
     public function store(Proyecto $proyecto, Request $request)
     {
         $proyecto->create($request->all());
-
+        $proyectoNew = Proyecto::where(['nombreProyecto' => $request->get('nombreProyecto')])->first();
+        $proyectoNew->users()->attach($request->get('users'));
         return redirect()->route('proyecto.index')
             ->withSuccess(__(' Proyecto creado correctamente'));
     }

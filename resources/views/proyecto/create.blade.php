@@ -22,9 +22,7 @@
                     @if ($errors->has('nombreProyecto'))
                         <span class="text-danger text-left">{{ $errors->first('nombreProyecto') }}</span>
                     @endif
-                </div>
-
-                
+                </div>                
                 <div class="mb-3">
                     <label for="fechaInicio" class="form-label">Fecha Inicio</label>
                     <input class="form-control" 
@@ -78,7 +76,20 @@
                         <span class="text-danger text-left">{{ $errors->first('descripcion') }}</span>
                     @endif
                 </div>
-
+                <div class="mb-3">
+                    <label for="user" class="form-label">User</label>
+                    <select class="form-control" 
+                        name="users[]" required id="usersMultiple" multiple="multiple">
+                        <option value="">Agregar Usuarios a proyecto</option>
+                        @foreach($users as $user)
+                            <option value="{{ $user->id }}"
+                                >{{ $user->name }}</option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('user'))
+                        <span class="text-danger text-left">{{ $errors->first('user') }}</span>
+                    @endif
+                </div>
 
                 <button type="submit" class="btn btn-primary">Guardar proyecto</button>
                 <a href="{{ route('proyecto.index') }}" class="btn btn-default">Volver</a>
@@ -86,4 +97,13 @@
         </div>
 
     </div>
+@endsection
+
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+    $('#usersMultiple').select2();
+});
+</script>
 @endsection
