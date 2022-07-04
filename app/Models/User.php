@@ -47,4 +47,13 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = bcrypt($value);
     }
+
+
+    public function proyectos()
+    {
+        return $this->belongsToMany(Proyecto::class,'proyecto_users');
+    }
+
+
+
 }
